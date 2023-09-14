@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
     <script src="./script.js"></script>
   </head>
-  <body></body>
+  <body onload="init()">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./img/logo.png"
+            alt="Logo"
+            width="50"
+            height="50"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+      </div>
+    </nav>
+    <div class="card" id="endcard" style="width: 18rem; display: none">
+      <img src="./img/brain result.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Glückwunsch</h5>
+        <p class="card-text">
+          Du hast <b id="final-rightAnswer">XXX</b> Fragen von
+          <b id="all-final-questions">XXX</b> richtig beantwortet
+        </p>
+      </div>
+      <button
+        class="btn btn-dark"
+        disabled
+        id="restart"
+        onclick="restartGame()"
+      >
+        Erneut spielen
+      </button>
+    </div>
+    <div class="main-content container" id="main">
+      <div class="card" id="card" style="width: 30rem">
+        <img src="./img/brainbg.jpg" class="card-img-top" alt="..." />
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped"
+            id="progess"
+            role="progressbar"
+            style="width: 0px"
+          ></div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" id="question">Frage</h5>
+          <p class="card-text">Fragestellung</p>
+          <div class="card" style="width: 18rem">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item quiz-answer-card"
+                id="answer_1"
+                onclick="answer('answer_1')"
+              >
+                Antwort
+              </li>
+              <li
+                class="list-group-item quiz-answer-card"
+                id="answer_2"
+                onclick="answer('answer_2')"
+              >
+                Antwort
+              </li>
+              <li
+                class="list-group-item quiz-answer-card"
+                id="answer_3"
+                onclick="answer('answer_3')"
+              >
+                Antwort
+              </li>
+              <li
+                class="list-group-item quiz-answer-card"
+                id="answer_4"
+                onclick="answer('answer_4')"
+              >
+                Antwort
+              </li>
+            </ul>
+          </div>
+          <div class="card-foter mt-5">
+            <span
+              >Frage <b id="current-question">1</b> von
+              <b id="all-questions"></b
+            ></span>
+            <button
+              class="btn btn-dark"
+              disabled
+              id="next-button"
+              onclick="next()"
+            >
+              Nächste Frage
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
